@@ -1,6 +1,8 @@
 # GCSE NEA Visual Basic Code, **CLI**
 
-# Since This No Longer Counts Towards Our Grade, I Have No Issue Putting Something Like This Out Here
+# NOTE! This Is MY Code, Nothing Here Is Stolen Or Leaked
+
+## Since This No Longer Counts Towards Our Grade, I Have No Issue Putting Something Like This Out Here
 
 # Features
 
