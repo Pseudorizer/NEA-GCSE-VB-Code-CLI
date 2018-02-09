@@ -1,0 +1,1 @@
+Upload full Visual Studio project file, so Appveyor can complete builds.
