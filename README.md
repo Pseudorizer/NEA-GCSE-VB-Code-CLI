@@ -1,7 +1,5 @@
 # MiniCheese28NEAGCSEVBCode
-Fully Working Source Code For GCSE NEA In Visual Basic!
-
-Fully working GCSE NEA code in Visual Basic
+Fully Working Source Code For The GCSE NEA In Visual Basic!
 
 # Features
 
