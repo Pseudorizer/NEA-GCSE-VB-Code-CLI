@@ -87,7 +87,7 @@ Module Module1
     Sub FirstRun()
         Dim folder As String
         Dim drive As String = Path.GetPathRoot(Environment.CurrentDirectory)
-        Dim write As System.IO.StreamWriter
+        Dim write As StreamWriter
 
         Console.WriteLine("")
         Console.WriteLine("This is the setup for where your information, user accounts and questions for this software will be stored")
@@ -166,7 +166,7 @@ Module Module1
 
     Sub filewrite(ByVal password, ByVal name, ByVal age, ByVal year, ByVal shortuser, ByVal read)
 
-        Dim write As System.IO.StreamWriter
+        Dim write As StreamWriter
         Dim path As String = read & shortuser
 
         If Directory.Exists(path) = True Then
