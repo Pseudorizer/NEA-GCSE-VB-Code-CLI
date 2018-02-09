@@ -35,9 +35,9 @@ Module Module1
             check = Console.ReadLine
 
             If check.ToLower = "yes" Then
-                acchecknew(read)
+                Accheck(read)
             ElseIf check.ToLower = "no" Then
-                accreate(read)
+                Accreate(read)
             Else
                 Console.WriteLine("Incorrect response")
                 repeat = True
@@ -149,12 +149,12 @@ Module Module1
         Dim read As String = My.Computer.FileSystem.ReadAllText(dir + "\path.txt")
         read = read.Trim()
 
-        accreate(read)
+        Accreate(read)
 
         Console.WriteLine("Proceeding to account creation...")
     End Sub
 
-    Sub accreate(ByVal read)
+    Sub Accreate(ByVal read)
         Dim name As String
         Dim password As String
         Dim age As String
@@ -181,10 +181,10 @@ Module Module1
 
         Console.WriteLine("Your username is " & shortuser)
 
-        filewrite(password, name, age, year, shortuser, read)
+        Filewrite(password, name, age, year, shortuser, read)
     End Sub
 
-    Sub filewrite(ByVal password, ByVal name, ByVal age, ByVal year, ByVal shortuser, ByVal read)
+    Sub Filewrite(ByVal password, ByVal name, ByVal age, ByVal year, ByVal shortuser, ByVal read)
 
         Dim write As System.IO.StreamWriter
         Dim path As String = read & shortuser
@@ -193,7 +193,7 @@ Module Module1
             Console.WriteLine(" ")
             Console.WriteLine("Your profile already exists")
             Console.WriteLine("----------------------------")
-            acchecknew(read)
+            Accheck(read)
         End If
 
         Directory.CreateDirectory(path)
@@ -227,10 +227,10 @@ Module Module1
         write.WriteLine(year)
         write.Close()
 
-        acchecknew(read)
+        Accheck(read)
     End Sub
 
-    Sub acchecknew(ByVal read)
+    Sub Accheck(ByVal read)
         Dim shortuser As String
         Console.WriteLine(" ")
         Console.WriteLine("Please enter your username.")
@@ -252,7 +252,7 @@ Module Module1
             End If
         ElseIf My.Computer.FileSystem.FileExists(locationuser) = False Then
             Console.WriteLine("Incorrect Username")
-            acchecknew(read)
+            Accheck(read)
         End If
 
 
@@ -272,7 +272,7 @@ Module Module1
                     Console.WriteLine("Password Incorrect. If you want to try a different username type RETRY. Else press ENTER.")
                     passretry = Console.ReadLine
                     If passretry.ToLower = "retry" Then
-                        acchecknew(read)
+                        Accheck(read)
                     Else
                         passerr = True
                     End If
