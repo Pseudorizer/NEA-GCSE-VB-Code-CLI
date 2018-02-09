@@ -1,4 +1,4 @@
-# GCSE NEA Visual Basic Code, **CLI**
+# GCSE NEA Visual Basic Code, **CLI** https://ci.appveyor.com/api/projects/status/213kucj9ax4je88y?svg=tru
 
 # NOTE! This Is MY Code, Nothing Here Is Stolen Or Leaked
 
