@@ -1,4 +1,4 @@
-# Fully Working Source Code For The GCSE NEA In Visual Basic! **CLI**
+# GCSE NEA Visual Basic Code, **CLI**
 
 # Features
 
