@@ -16,6 +16,7 @@
 * Exports formatted logs of grade, score, percentage and other user information (Not very elegant code right now)
 * Allows the user to restart the quiz, change subject etc at the end of the quiz
 * Automatic triggering of a fix if the users folder (Where questions and accounts are stored) if it isn't found.
+* Code that you don't have to touch at all! i think :)
 
 # Extras READ!
 * You have to create an 'answers.txt' and 'questions.txt' for each subject and difficulty. I know it's tedious but you're getting this code for free ya lazy bastard
