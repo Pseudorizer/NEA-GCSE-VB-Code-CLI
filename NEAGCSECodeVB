@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 
 Module Module1
     Public Sub Main()
@@ -116,6 +116,7 @@ Module Module1
         Directory.CreateDirectory(l + "\Music\Hard")
 
         Console.WriteLine("Done")
+        Console.WriteLine("")
         Console.WriteLine("Delete " + drive + "NeaPermFolder or edit path.txt to change file location")
 
         Dim dir As String = drive + "NeaPermFolder"
@@ -216,21 +217,21 @@ Module Module1
         Console.WriteLine("Please enter your username.")
         shortuser = Console.ReadLine
 
-        Dim cpass As String
+        Dim upass As String
         Dim passerr As Boolean = False
-        Dim passretry As String
-        Dim locationuser As String = read & shortuser & "\Username.txt"
-        Dim locationpass As String = read & shortuser & "\Password.txt"
+        Dim passrty As String
+        Dim locuser As String = read & shortuser & "\Username.txt"
+        Dim locpass As String = read & shortuser & "\Password.txt"
         Dim usrcomp As Integer
         Dim passcomp As Integer
 
-        If My.Computer.FileSystem.FileExists(locationuser) = True Then 'Checks username
-            Dim curfile As String = My.Computer.FileSystem.ReadAllText(locationuser)
-            If usrcomp = StrComp(shortuser, curfile, CompareMethod.Text) = 0 Then
+        If My.Computer.FileSystem.FileExists(locuser) = True Then 'Checks username
+            Dim usrfile As String = My.Computer.FileSystem.ReadAllText(locuser)
+            If usrcomp = StrComp(shortuser, usrfile, CompareMethod.Text) = 0 Then
                 Console.WriteLine(" ")
                 Console.WriteLine("Username matches")
             End If
-        ElseIf My.Computer.FileSystem.FileExists(locationuser) = False Then
+        ElseIf My.Computer.FileSystem.FileExists(locuser) = False Then
             Console.WriteLine("Incorrect Username")
             acchecknew(read)
         End If
@@ -240,18 +241,18 @@ Module Module1
 
             Console.WriteLine(" ")
             Console.WriteLine("Please enter your password")
-            cpass = Console.ReadLine
+            upass = Console.ReadLine
 
-            If My.Computer.FileSystem.FileExists(locationpass) = True Then
-                Dim curfile2 As String = My.Computer.FileSystem.ReadAllText(locationpass)
-                curfile2 = curfile2.Trim()
-                If passcomp = StrComp(cpass, curfile2, CompareMethod.Text) = -1 Then 'Why does -1 work?
+            If My.Computer.FileSystem.FileExists(locpass) = True Then
+                Dim passfile As String = My.Computer.FileSystem.ReadAllText(locpass)
+                passfile = passfile.Trim()
+                If passcomp = StrComp(upass, passfile, CompareMethod.Text) = -1 Then 'Why does -1 work?
                     Console.WriteLine("Password matches. Login successful")
                     Subchoice(shortuser, read)
-                ElseIf passcomp = StrComp(cpass, curfile2, CompareMethod.Text) = 0 Then
+                ElseIf passcomp = StrComp(upass, passfile, CompareMethod.Text) = 0 Then
                     Console.WriteLine("Password Incorrect. If you want to try a different username type RETRY. Else press ENTER.")
-                    passretry = Console.ReadLine
-                    If passretry.ToLower = "retry" Then
+                    passrty = Console.ReadLine
+                    If passrty.ToLower = "retry" Then
                         acchecknew(read)
                     Else
                         passerr = True
@@ -264,21 +265,21 @@ Module Module1
     End Sub
 
     Sub Subchoice(ByVal shortuser, ByVal read)
-        Dim choicesub As String
-        Dim choicesubdiff As String
+        Dim csub As String
+        Dim cdiff As String
         Dim suberr As Boolean = False
 
         Do
             Console.WriteLine(" ")
             Console.WriteLine("Choose your subject, Computer Science, History or Music?")
-            choicesub = Console.ReadLine()
+            csub = Console.ReadLine()
 
-            If choicesub = "computer science" Or choicesub.ToLower = "history" Or choicesub.ToLower = "music" Then
+            If csub = "computer science" Or csub.ToLower = "history" Or csub.ToLower = "music" Then
                 Do
                     Console.WriteLine("What difficulty, easy, medium or hard?")
-                    choicesubdiff = Console.ReadLine()
-                    If choicesubdiff.ToLower = "easy" Or choicesubdiff.ToLower = "medium" Or choicesubdiff.ToLower = "hard" Then
-                        QuestionSub(shortuser, choicesubdiff, choicesub, read)
+                    cdiff = Console.ReadLine()
+                    If cdiff.ToLower = "easy" Or cdiff.ToLower = "medium" Or cdiff.ToLower = "hard" Then
+                        QuestionSub(shortuser, cdiff, csub, read)
                     Else
                         Console.WriteLine("Difficulty not found")
                         suberr = True
@@ -304,11 +305,11 @@ Module Module1
         Return v
     End Function
 
-    Sub QuestionSub(ByVal shortuser, ByVal choicesubdiff, ByVal choicesub, ByVal read)
+    Sub QuestionSub(ByVal shortuser, ByVal cdiff, ByVal csub, ByVal read)
         Dim total As Integer = 0
         Dim line As Integer = 2
-        Dim questiondir As String = read + "\Questions\" + choicesub + "\" + choicesubdiff + "\questions.txt"
-        Dim answerdir As String = read + "\Questions\" + choicesub + "\" + choicesubdiff + "\answers.txt"
+        Dim qdir As String = read + "\Questions\" + csub + "\" + cdiff + "\questions.txt"
+        Dim adir As String = read + "\Questions\" + csub + "\" + cdiff + "\answers.txt"
         Dim q As String
         Dim a As String
         Dim ua As String
@@ -319,8 +320,8 @@ Module Module1
         Dim over As String
 
         Do
-            q = QAGet(line, questiondir) 'Uses the function to get the question
-            a = QAGet(line, answerdir) 'Uses the function to get the answer
+            q = QAGet(line, qdir) 'Uses the function to get the question
+            a = QAGet(line, adir) 'Uses the function to get the answer
 
             If a = "" And q = "" Then 'Checks if any questions are left
                 Exit Do
@@ -341,7 +342,7 @@ Module Module1
                 qnum = qnum + 1
             Else
                 Console.WriteLine("What have you done?")
-                QuestionSub(shortuser, choicesubdiff, choicesub, read)
+                QuestionSub(shortuser, cdiff, csub, read)
             End If
         Loop 'Loops until the if statement exits the do loop
 
@@ -354,10 +355,10 @@ Module Module1
 
         Dim usr As String = Left(shortuser, 3) 'Creates shorter username
         Dim path As String = read + shortuser
-        Dim fpath As String = path + "\Scores\" + choicesub + "\" + choicesubdiff + "\Scores.txt"
+        Dim fpath As String = path + "\Scores\" + csub + "\" + cdiff + "\Scores.txt"
 
-        If Not Directory.Exists(path + "\Scores\" + choicesub + "\" + choicesubdiff) Then 'Creates a directory for scores in the users profile based on the subject and difficulty
-            Directory.CreateDirectory(path + "\Scores\" + choicesub + "\" + choicesubdiff)
+        If Not Directory.Exists(path + "\Scores\" + csub + "\" + cdiff) Then 'Creates a directory for scores in the users profile based on the subject and difficulty
+            Directory.CreateDirectory(path + "\Scores\" + csub + "\" + cdiff)
             Dim fileCreate As FileStream = File.Create(fpath)
             fileCreate.Close()
         ElseIf Not File.Exists(fpath) Then 'Checks if the file scores.txt exists, if not create it
@@ -369,16 +370,16 @@ Module Module1
 
         Select Case total
             Case 0
-                File.AppendAllText(fpath, vbCrLf & "User: " + usr + "|" & " Grade: 1C | With a score Of " & total & "| Percentage: " & qper & "%" & "| Difficulty: " & choicesubdiff & " | Quiz type: " & choicesub & " | At " & time)
+                File.AppendAllText(fpath, vbCrLf & "User: " + usr + "|" & " Grade: 1C | With a score Of " & total & "| Percentage: " & qper & "%" & "| Difficulty: " & cdiff & " | Quiz type: " & csub & " | At " & time)
                 Console.WriteLine("You got a grade 1c")
             Case 1
-                File.AppendAllText(fpath, vbCrLf & "User: " + usr + "|" & " Grade: 2C | With a score Of " & total & "| Percentage: " & qper & "%" & "| Difficulty: " & choicesubdiff & " | Quiz type: " & choicesub & " | At " & time)
+                File.AppendAllText(fpath, vbCrLf & "User: " + usr + "|" & " Grade: 2C | With a score Of " & total & "| Percentage: " & qper & "%" & "| Difficulty: " & cdiff & " | Quiz type: " & csub & " | At " & time)
                 Console.WriteLine("You got a grade 2c")
             Case 2
-                File.AppendAllText(fpath, vbCrLf & "User: " + usr + "|" & " Grade: 3C | With a score Of " & total & "| Percentage: " & qper & "%" & "| Difficulty: " & choicesubdiff & " | Quiz type: " & choicesub & " | At " & time)
+                File.AppendAllText(fpath, vbCrLf & "User: " + usr + "|" & " Grade: 3C | With a score Of " & total & "| Percentage: " & qper & "%" & "| Difficulty: " & cdiff & " | Quiz type: " & csub & " | At " & time)
                 Console.WriteLine("You got a grade 3c")
             Case 3
-                File.AppendAllText(fpath, vbCrLf & "User: " + usr + "|" & " Grade: 4C | With a score Of " & total & "| Percentage: " & qper & "%" & "| Difficulty: " & choicesubdiff & " | Quiz type: " & choicesub & " | At " & time)
+                File.AppendAllText(fpath, vbCrLf & "User: " + usr + "|" & " Grade: 4C | With a score Of " & total & "| Percentage: " & qper & "%" & "| Difficulty: " & cdiff & " | Quiz type: " & csub & " | At " & time)
                 Console.WriteLine("You got a grade 4c")
             Case Else
                 Console.WriteLine("Something went wrong, i don't how you did it.")
@@ -392,7 +393,7 @@ Module Module1
             over = Console.ReadLine
 
             If over.ToLower = "a" Then
-                QuestionSub(shortuser, choicesubdiff, choicesub, read)
+                QuestionSub(shortuser, cdiff, csub, read)
             ElseIf over.ToLower = "b" Then
                 Subchoice(shortuser, read)
             ElseIf over.ToLower = "c" Then
