@@ -1,5 +1,7 @@
 # GCSE NEA Visual Basic Code, **CLI**
 
+# Since This No Longer Counts Towards Our Grade, I Have No Issue Putting Something Like This Out Here
+
 # Features
 
 * Automatic creation of required files and folders as set out in brief (DOES NOT include questions and answers files). Lets the user choose the folders name
