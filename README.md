@@ -18,7 +18,7 @@
 * Automatic triggering of a fix if the users folder (Where questions and accounts are stored) if it isn't found.
 
 # Extras READ!
-* You have to create an 'answers.txt' and 'questions.txt' for each subject and difficulty. I know it's tedious :(
+* You have to create an 'answers.txt' and 'questions.txt' for each subject and difficulty. I know it's tedious but you're getting this code for free ya lazy bastard
 * When creating questions/ answers, you should start on the third line down and then write your next line 2 lines down. Repeat this for each questions
 
 ## Example
