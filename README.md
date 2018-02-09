@@ -19,7 +19,7 @@
 
 # Extras READ!
 * You have to create an 'answers.txt' and 'questions.txt' for each subject and difficulty. I know it's tedious but you're getting this code for free ya lazy bastard
-* When creating questions/ answers, you should start on the third line down and then write your next line 2 lines down. Repeat this for each questions
+* When creating questions/answers, you should start on the third line down and then write your next line 2 lines down. Repeat this for each question
 
 ## Example
 Line 1: Empty
