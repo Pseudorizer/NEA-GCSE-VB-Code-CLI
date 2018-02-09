@@ -1,6 +1,6 @@
 # GCSE NEA Visual Basic Code, CLI
 
-### Most Recent Build | ![Windows Build](https://ci.appveyor.com/api/projects/status/213kucj9ax4je88y/branch/master?svg=true)
+### Most Recent Build | ![Windows Build](https://ci.appveyor.com/api/projects/status/213kucj9ax4je88y?svg=true)
 
 # NOTE! This Is MY Code, Nothing Here Is Stolen Or Leaked
 
