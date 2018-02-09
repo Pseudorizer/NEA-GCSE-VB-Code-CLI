@@ -1,5 +1,4 @@
-# MiniCheese28NEAGCSEVBCode
-Fully Working Source Code For The GCSE NEA In Visual Basic! **CLI**
+# Fully Working Source Code For The GCSE NEA In Visual Basic! **CLI**
 
 # Features
 
