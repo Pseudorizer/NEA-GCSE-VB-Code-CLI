@@ -37,4 +37,4 @@ Line 6: Empty
 Line 7: WRITE
 
 # Final Words
-This code probably isn't the best or even close to the best out there, but hey it works and it's a lot fucking better than just creating 15 if statements inside of each other. Which is what my whole class is doing. I mean it works but ew.
+This code probably isn't the best or even close to the best out there, but hey it works, it'll **probably** get you a good mark for the code and it's a lot fucking better than just creating 15 if statements inside of each other. Which is what my whole class is doing. I mean it works but ew.
