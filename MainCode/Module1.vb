@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 
 Module Module1
     Public Sub Main()
@@ -9,13 +9,14 @@ Module Module1
 
         Do
             If Not Directory.Exists(root + "NeaPermFolder") Then
+                Console.WriteLine("")
                 Console.WriteLine("Is this your first time running the software? Yes or No?")
                 Dim c As String = Console.ReadLine()
 
                 If c.ToLower = "yes" Then
                     FirstRun()
                 ElseIf c.ToLower = "no" Then
-                    DriveERRFix(root)
+                    PermFoldERR(root)
                 Else
                     Console.WriteLine("Incorrect Response")
                     lp = True
@@ -44,7 +45,7 @@ Module Module1
         Loop While repeat = True
     End Sub
 
-    Sub DriveERRFix(ByVal root)
+    Sub PermFoldERR(ByVal root)
         Dim permlocation As String = "NeaPermFolder"
         Dim realdir As String
         Dim lm As Boolean = False
@@ -52,35 +53,52 @@ Module Module1
         Dim read As StreamReader
         Dim write As StreamWriter
 
+        Console.WriteLine(" ")
+        Console.WriteLine("Error, NeaPermFolder not found. If you have moved the application to a different drive please enter 1")
+        Console.WriteLine("If your folder containing user information and questions still exists but NeaPermFolder is gone please enter 2")
+        Dim ch As String = Console.ReadLine()
 
-        Do
-            Console.WriteLine(" ")
-            Console.WriteLine("Directory error, please enter the drive you stored setup files on. This will only need to be run once. I.E E:\")
-            realdir = Console.ReadLine()
+        If ch = 1 Then
+            Do
+                Console.WriteLine("")
+                Console.WriteLine("Please enter the drive you had the application on originally. I.E. E:\")
+                realdir = Console.ReadLine()
+                If Not Directory.Exists(realdir + permlocation) Then
+                    Console.WriteLine("Directory not found. Please make sure you entered the right drive or that it actually exists")
+                    Console.WriteLine("If the folder doesn't exist, please enter retry to try again")
+                    Console.WriteLine("Else press enter")
+                    Dim realdirq As String = Console.ReadLine()
+                    If realdirq.ToLower = "retry" Then
+                        PermFoldERR(root)
+                    Else
+                        lm = True
+                    End If
+                ElseIf Directory.Exists(realdir + permlocation) Then
+                    Directory.CreateDirectory(root + permlocation)
 
-            If Not Directory.Exists(realdir + permlocation) Then
-                Console.WriteLine("Error, directory not found. Please make sure you entered the right drive or that it actually exists")
-                lm = True
-            ElseIf Directory.Exists(realdir + permlocation) Then
-                Exit Do
-            End If
-        Loop While lm = True
+                    Dim fc As FileStream = File.Create(root + permlocation + "\path.txt")
+                    fc.Close()
 
-        Directory.CreateDirectory(root + permlocation)
+                    write = My.Computer.FileSystem.OpenTextFileWriter(root + permlocation + "\path.txt", True)
+                    read = My.Computer.FileSystem.OpenTextFileReader(realdir + permlocation + "\path.txt")
+                    Dim dir As String = read.ReadLine
+                    write.WriteLine(dir)
+                    write.Close()
+                    read.Close()
 
-        Dim fc As FileStream = File.Create(root + permlocation + "\path.txt")
-        fc.Close()
+                    Console.WriteLine("")
+                    Console.WriteLine("Done, retrying...")
+                    Console.WriteLine("Success")
+                    lm = False
+                End If
+            Loop While lm = True
+        ElseIf ch = 2 Then
+            Console.WriteLine("")
+            Console.WriteLine("You will now go through the first time setup again")
+            Console.WriteLine("Please enter the exact folder name. No data will be overwritten")
+            FirstRun()
+        End If
 
-        write = My.Computer.FileSystem.OpenTextFileWriter(root + permlocation + "\path.txt", True)
-        read = My.Computer.FileSystem.OpenTextFileReader(realdir + permlocation + "\path.txt")
-        Dim dir As String = read.ReadLine
-        write.WriteLine(dir)
-        write.Close()
-        read.Close()
-
-        Console.WriteLine("")
-        Console.WriteLine("Done, retrying...")
-        Console.WriteLine("Success")
         Main()
     End Sub
 
@@ -94,6 +112,7 @@ Module Module1
         Console.WriteLine("Please enter your folder name")
         folder = Console.ReadLine
 
+        Console.WriteLine("")
         Console.WriteLine("Creating Directories...")
         Console.WriteLine("-------------------------")
 
@@ -116,7 +135,8 @@ Module Module1
         Directory.CreateDirectory(l + "\Music\Hard")
 
         Console.WriteLine("Done")
-        Console.WriteLine("Delete " + drive + "NeaPermFolder or edit path.txt to change file location")
+        Console.WriteLine("Delete " + drive + "NeaPermFolder to change file location")
+        Console.WriteLine("Remember you still need to create the questions if they do not exist!")
 
         Dim dir As String = drive + "NeaPermFolder"
         Directory.CreateDirectory(dir)
