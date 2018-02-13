@@ -1,0 +1,11 @@
+C:\Users\MiniCheese27\source\repos\GCSENEACode\GCSENEACode\bin\Debug\GCSENEACode.exe.config
+C:\Users\MiniCheese27\source\repos\GCSENEACode\GCSENEACode\bin\Debug\GCSENEACode.exe
+C:\Users\MiniCheese27\source\repos\GCSENEACode\GCSENEACode\bin\Debug\GCSENEACode.pdb
+C:\Users\MiniCheese27\source\repos\GCSENEACode\GCSENEACode\bin\Debug\GCSENEACode.xml
+C:\Users\MiniCheese27\source\repos\GCSENEACode\GCSENEACode\obj\Debug\GCSENEACode.vbprojResolveAssemblyReference.cache
+C:\Users\MiniCheese27\source\repos\GCSENEACode\GCSENEACode\obj\Debug\GCSENEACode.Resources.resources
+C:\Users\MiniCheese27\source\repos\GCSENEACode\GCSENEACode\obj\Debug\GCSENEACode.vbproj.GenerateResource.Cache
+C:\Users\MiniCheese27\source\repos\GCSENEACode\GCSENEACode\obj\Debug\GCSENEACode.vbproj.CoreCompileInputs.cache
+C:\Users\MiniCheese27\source\repos\GCSENEACode\GCSENEACode\obj\Debug\GCSENEACode.exe
+C:\Users\MiniCheese27\source\repos\GCSENEACode\GCSENEACode\obj\Debug\GCSENEACode.xml
+C:\Users\MiniCheese27\source\repos\GCSENEACode\GCSENEACode\obj\Debug\GCSENEACode.pdb
