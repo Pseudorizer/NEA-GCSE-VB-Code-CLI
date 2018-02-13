@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 
 Module Module1
     Public Sub Main()
@@ -65,7 +65,7 @@ Module Module1
                 realdir = Console.ReadLine()
                 If Not Directory.Exists(realdir + permlocation) Then
                     Console.WriteLine("Directory not found. Please make sure you entered the right drive or that it actually exists")
-                    Console.WriteLine("If the folder doesn't exist, please enter retry to try again")
+                    Console.WriteLine("If the folder doesn't exist, enter retry to go back and choose option 2")
                     Console.WriteLine("Else press enter")
                     Dim realdirq As String = Console.ReadLine()
                     If realdirq.ToLower = "retry" Then
