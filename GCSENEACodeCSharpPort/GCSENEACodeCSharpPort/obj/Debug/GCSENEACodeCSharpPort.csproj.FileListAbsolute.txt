@@ -1,0 +1,7 @@
+c:\users\minicheese27\source\repos\GCSENEACodeCSharpPort\GCSENEACodeCSharpPort\bin\Debug\GCSENEACodeCSharpPort.exe.config
+c:\users\minicheese27\source\repos\GCSENEACodeCSharpPort\GCSENEACodeCSharpPort\bin\Debug\GCSENEACodeCSharpPort.exe
+c:\users\minicheese27\source\repos\GCSENEACodeCSharpPort\GCSENEACodeCSharpPort\bin\Debug\GCSENEACodeCSharpPort.pdb
+c:\users\minicheese27\source\repos\GCSENEACodeCSharpPort\GCSENEACodeCSharpPort\obj\Debug\GCSENEACodeCSharpPort.csprojResolveAssemblyReference.cache
+c:\users\minicheese27\source\repos\GCSENEACodeCSharpPort\GCSENEACodeCSharpPort\obj\Debug\GCSENEACodeCSharpPort.csproj.CoreCompileInputs.cache
+c:\users\minicheese27\source\repos\GCSENEACodeCSharpPort\GCSENEACodeCSharpPort\obj\Debug\GCSENEACodeCSharpPort.exe
+c:\users\minicheese27\source\repos\GCSENEACodeCSharpPort\GCSENEACodeCSharpPort\obj\Debug\GCSENEACodeCSharpPort.pdb
