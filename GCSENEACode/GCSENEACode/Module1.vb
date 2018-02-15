@@ -12,10 +12,11 @@ Module Module1
                 Console.WriteLine("")
                 Console.WriteLine("Is this your first time running the software? Yes or No?")
                 Dim c As String = Console.ReadLine()
+                c.ToLower()
 
-                If c.ToLower = "yes" Then
+                If c = "yes" Then
                     FirstRun()
-                ElseIf c.ToLower = "no" Then
+                ElseIf c = "no" Then
                     PermFoldERR(root)
                 Else
                     Console.WriteLine("Incorrect Response")
@@ -33,10 +34,11 @@ Module Module1
             Console.WriteLine(" ")
             Console.WriteLine("Do you have an account? Yes or No.")
             check = Console.ReadLine
+            check.ToLower()
 
-            If check.ToLower = "yes" Then
+            If check = "yes" Then
                 Accheck(read)
-            ElseIf check.ToLower = "no" Then
+            ElseIf check = "no" Then
                 Accreate(read)
             Else
                 Console.WriteLine("Incorrect response")
@@ -65,7 +67,7 @@ Module Module1
                 realdir = Console.ReadLine()
                 If Not Directory.Exists(realdir + permlocation) Then
                     Console.WriteLine("Directory not found. Please make sure you entered the right drive or that it actually exists")
-                    Console.WriteLine("If the folder doesn't exist, enter retry to go back and choose option 2")
+                    Console.WriteLine("If the folder doesn't exist, please enter retry to try again")
                     Console.WriteLine("Else press enter")
                     Dim realdirq As String = Console.ReadLine()
                     If realdirq.ToLower = "retry" Then
@@ -292,12 +294,14 @@ Module Module1
             Console.WriteLine(" ")
             Console.WriteLine("Choose your subject, Computer Science, History or Music?")
             choicesub = Console.ReadLine()
+            choicesub.ToLower()
 
-            If choicesub = "computer science" Or choicesub.ToLower = "history" Or choicesub.ToLower = "music" Then
+            If choicesub = "computer science" Or choicesub = "history" Or choicesub = "music" Then
                 Do
                     Console.WriteLine("What difficulty, easy, medium or hard?")
                     choicesubdiff = Console.ReadLine()
-                    If choicesubdiff.ToLower = "easy" Or choicesubdiff.ToLower = "medium" Or choicesubdiff.ToLower = "hard" Then
+                    choicesubdiff.ToLower()
+                    If choicesubdiff = "easy" Or choicesubdiff = "medium" Or choicesubdiff = "hard" Then
                         QuestionSub(shortuser, choicesubdiff, choicesub, read)
                     Else
                         Console.WriteLine("Difficulty not found")
@@ -410,14 +414,15 @@ Module Module1
             Console.WriteLine(" ")
             Console.WriteLine("Would you like to A replay this quiz, B choose another subject, C quit or D logout")
             over = Console.ReadLine
+            over.ToLower()
 
-            If over.ToLower = "a" Then
+            If over = "a" Then
                 QuestionSub(shortuser, choicesubdiff, choicesub, read)
-            ElseIf over.ToLower = "b" Then
+            ElseIf over = "b" Then
                 Subchoice(shortuser, read)
-            ElseIf over.ToLower = "c" Then
+            ElseIf over = "c" Then
                 End
-            ElseIf over.ToLower = "d" Then
+            ElseIf over = "d" Then
                 Main()
             Else
                 Console.WriteLine("Use A, B, C or D")
