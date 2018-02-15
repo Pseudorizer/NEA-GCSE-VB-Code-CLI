@@ -4,7 +4,8 @@
 
 # NOTE! This Is MY Code, Nothing Here Is Stolen Or Leaked
 
-## Since This No Longer Counts Towards Our Grade, I Have No Issue Putting Something Like This Out Here
+### Since This No Longer Counts Towards Our Grade, I Have No Issue Putting Something Like This Out Here
+### I also plan on porting this over to C# soon as a project to improve my skills with the language
 
 # Features
 
