@@ -5,7 +5,7 @@
 # NOTE! This Is MY Code, Nothing Here Is Stolen Or Leaked
 
 ### Since This No Longer Counts Towards Our Grade, I Have No Issue Putting Something Like This Out Here
-### I also plan on porting this over to C# soon as a project to improve my skills with the language
+### I've begun porting this over to C# as a personal project, do not use this code for now. I'm still learning the structure of the language and how it all works.
 
 # Features
 
