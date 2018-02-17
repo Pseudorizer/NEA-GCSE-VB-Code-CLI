@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,41 +8,52 @@ namespace GCSENEACodeCSharpPort
 {
     class Start
     {
+        static List<string> UserInfo()
+        {
+            string[] writeIndex = new string[4] { "name", "password", "age", "year group" };
+            List<string> savedValues = new List<string>();
+
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine("Please enter your {0}", writeIndex[i]);
+                savedValues.Add(Console.ReadLine());
+            }
+
+            return savedValues;
+        }
+
         static void Main()
         {
             string space = new string(' ', 1);
-            int e = 0;
+            bool l = false;
+            string userName;
+            List<string> userData;
 
             do {
                 Console.WriteLine("Do you have an account? Yes or No?");
-                string name = Console.ReadLine();
-                name.ToLower();
+                string AccountCheck = Console.ReadLine();
+                AccountCheck.ToLower();
 
-                if (name == "yes")
+                if (AccountCheck == "yes")
                 {
-                    Console.WriteLine("yes test");
+                    
                 }
-                else if (name == "no")
+                else if (AccountCheck == "no")
                 {
-                    Console.WriteLine("No test");
+                    userData = UserInfo();
+                    string t = userData[0];
+                    int j = Convert.ToInt32(userData[1]);
+                    userName = t.Substring(0, 3) + j;
                 }
                 else
                 {
                     Console.WriteLine("Error incorrect response");
                     Console.WriteLine(space);
-                    e++;
+                    l = true;
                 }
-            } while (e == 1);
+            } while (l == true);
 
          Console.ReadKey();
         }
-        public void UserInfo()
-        {
-
-        }
-    }
-    class FileRW
-    {
-
     }
 }
