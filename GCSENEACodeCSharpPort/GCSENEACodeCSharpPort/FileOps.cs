@@ -47,6 +47,7 @@ namespace GCSENEACodeCSharpPort
 
             if (dirCheck == true) //If it does move them along to Login.SignIn()
             {
+                Console.WriteLine(" ");
                 Console.WriteLine("User account already exists");
                 Console.WriteLine(" ");
                 Login.SignIn();
@@ -65,18 +66,19 @@ namespace GCSENEACodeCSharpPort
 
         public static string GetUserData(string dir)
         {
-            if (DirCheck(dir) == false) //Checks if the location exists
-            {
-                string e = "y"; //If not return e
-                return e;
-            }
-            else //If it does exist
+            try
             {
                 string userName;
                 StreamReader ReadUserName = new StreamReader(dir); //Opens the text from dir
                 userName = Convert.ToString(ReadUserName.ReadLine()); //Converts data read by ReadUserName into string and stores it
                 ReadUserName.Close();
                 return userName;
+            }
+            catch (DirectoryNotFoundException)
+            {
+                Console.WriteLine("Incorrect, please try again");
+                bool b = false;
+                return b.ToString();
             }
         }
     }

@@ -8,7 +8,7 @@ namespace GCSENEACodeCSharpPort
         {
             string userName;
             string PassInput;
-            bool UserAccountCheck = false;
+            bool UserAccountCheck;
             bool PasswordComparisonCheck;
             string space = new string(' ', 1);
 
@@ -25,15 +25,16 @@ namespace GCSENEACodeCSharpPort
 
                 string UserCheck = FileOps.GetUserDir(userDir);
 
-                if (UserCheck == "y") //Look into different solution, toy around with DirectoryNotFoundException, try to find a working catch method
+                if (UserCheck == "False")
                 {
-                    Console.WriteLine("User account not found");
-                    UserAccountCheck = true;
+                    UserCheck.ToLower();
+                    UserAccountCheck = Convert.ToBoolean(UserCheck);
                 }
                 else
                 {
                     UserAccountCheck = StringCheck(userName, UserCheck);
                 }
+
             } while (UserAccountCheck == false);
 
             do
@@ -48,6 +49,8 @@ namespace GCSENEACodeCSharpPort
 
                 PasswordComparisonCheck = StringCheck(PassInput, passRead);
             } while (PasswordComparisonCheck == false);
+
+            Console.ReadKey();
 
             Console.Clear();
             return;
