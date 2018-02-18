@@ -27,7 +27,7 @@ namespace GCSENEACodeCSharpPort
                 switch (AccountCheck)
                 {
                     case "yes":
-                        Console.WriteLine("test");
+                        Login.SignIn();
                         break;
                     case "no":
                         userData = UserInfo();
@@ -37,6 +37,7 @@ namespace GCSENEACodeCSharpPort
                         userData[4] = userName;
 
                         FileWrite.MainFW((string[])userData.ToArray());
+                        Login.SignIn();
                         break;
                     default:
                         Console.WriteLine("Error incorrect response");
@@ -66,6 +67,14 @@ namespace GCSENEACodeCSharpPort
 
     class FileWrite : Start
     {
+        public static string GetUserDir(string inputUserName)
+        {
+            string root = Path.GetPathRoot(Directory.GetCurrentDirectory());
+            string dir = root + @"NeaFiles\" + inputUserName;
+
+            return dir;
+        }
+
         public static void FileWriter(string dir, string[] userDataArray)
         {
             string[] fileNames = new string[5] { "Name", "Password", "Age", "Year Group", "Username" };
@@ -105,6 +114,67 @@ namespace GCSENEACodeCSharpPort
 
             Directory.CreateDirectory(dir + userData[4] + @"\");
             FileWriter(dir, userData);
+            return;
+        }
+
+        public static bool DirCheck(string dir)
+        {
+            bool check = File.Exists(dir);
+            return check;
+        }
+
+        public static string GetUserData(string dir)
+        {
+            if (DirCheck(dir) == false)
+            {
+                string e = "y";
+                return e;
+            }
+            else
+            {
+                string userName;
+                string userNameLocation = dir;
+                StreamReader ReadUserName = new StreamReader(dir);
+                userName = Convert.ToString(ReadUserName.ReadLine());
+                ReadUserName.Close();
+                return userName;
+            }
+        }
+    }
+    class Login
+    {
+        public static string SignIn()
+        {
+            string ActualUserName;
+            bool userLoop = false;
+
+            do
+            {
+                Console.WriteLine("Please enter your username");
+                string InputUserName = Console.ReadLine();
+                InputUserName = InputUserName + @"\Username.txt";
+
+                string UserDir = FileWrite.GetUserDir(InputUserName);
+                ActualUserName = FileWrite.GetUserData(UserDir);
+
+                if (ActualUserName == "y")
+                {
+                    Console.WriteLine("User account not found");
+                    Console.WriteLine(" ");
+                    userLoop = true;
+                }
+            } while (userLoop == true);
+
+            Console.WriteLine("Please enter your password");
+            string InputPassword = Console.ReadLine();
+            InputPassword = InputPassword + @"\Password.txt";
+
+            string PasswordDir = FileWrite.GetUserDir(InputPassword);
+            string ActualPassword = FileWrite.GetUserData(PasswordDir);
+
+            Console.ReadKey();
+
+            return ActualUserName;
         }
     }
 }
