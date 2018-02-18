@@ -58,12 +58,6 @@ namespace GCSENEACodeCSharpPort
             Login.SignIn();
         }
 
-        public static bool DirCheck(string dir)
-        {
-            bool check = File.Exists(dir);
-            return check;
-        }
-
         public static string GetUserData(string dir)
         {
             try

@@ -46,9 +46,6 @@ namespace GCSENEACodeCSharpPort
                 }
             } while (l == true);
 
-            Console.WriteLine("Login successful");
-            Console.WriteLine(space);
-
             Console.ReadKey();
         }
 

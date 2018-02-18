@@ -50,9 +50,15 @@ namespace GCSENEACodeCSharpPort
                 PasswordComparisonCheck = StringCheck(PassInput, passRead);
             } while (PasswordComparisonCheck == false);
 
+            Console.WriteLine(space);
+            Console.WriteLine("Login successful, press enter");
+
             Console.ReadKey();
 
             Console.Clear();
+
+            Difficulty.Choice();
+
             return;
         }
 
