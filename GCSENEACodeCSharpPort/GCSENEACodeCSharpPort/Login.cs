@@ -10,28 +10,35 @@ namespace GCSENEACodeCSharpPort
             string PassInput;
             bool UserAccountCheck = false;
             bool PasswordComparisonCheck;
+            string space = new string(' ', 1);
+
+            Console.WriteLine(" ");
+            Console.WriteLine("Login");
+            Console.WriteLine("---------------------------");
 
             do
             {
+                Console.WriteLine(space);
                 Console.WriteLine("Please enter your username");
                 userName = Console.ReadLine();
                 string userDir = userName + @"\Username.txt";
 
                 string UserCheck = FileOps.GetUserDir(userDir);
 
-                if (UserCheck == "y")
+                if (UserCheck == "y") //Look into different solution, toy around with DirectoryNotFoundException, try to find a working catch method
                 {
                     Console.WriteLine("User account not found");
                     UserAccountCheck = true;
                 }
                 else
                 {
-                    UserAccountCheck = false;
+                    UserAccountCheck = StringCheck(userName, UserCheck);
                 }
-            } while (UserAccountCheck == true);
+            } while (UserAccountCheck == false);
 
             do
             {
+                Console.WriteLine(space);
                 Console.WriteLine("Please enter your password");
                 PassInput = Console.ReadLine();
                 string passDir = userName + @"\Password.txt";
@@ -39,22 +46,25 @@ namespace GCSENEACodeCSharpPort
                 string passRead = FileOps.GetUserDir(passDir);
                 passRead.Trim();
 
-                PasswordComparisonCheck = PasswordCheck(PassInput, passRead);
+                PasswordComparisonCheck = StringCheck(PassInput, passRead);
             } while (PasswordComparisonCheck == false);
 
+            Console.Clear();
             return;
         }
 
-        static bool PasswordCheck(string userInput, string realPassword)
+        static bool StringCheck(string Input, string ToCompare)
         {
-            bool c = string.Equals(userInput, realPassword);
+            bool c = string.Equals(Input, ToCompare);
             switch (c)
             {
                 case true:
-                    Console.WriteLine("Password matches");
+                    Console.WriteLine(" ");
+                    Console.WriteLine("Success");
                     return true;
                 case false:
-                    Console.WriteLine("Password incorrect");
+                    Console.WriteLine(" ");
+                    Console.WriteLine("Incorrect");
                     return false;
             }
             return false;
