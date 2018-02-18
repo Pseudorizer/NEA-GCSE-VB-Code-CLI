@@ -9,7 +9,6 @@ namespace GCSENEACodeCSharpPort
         {
             string space = new string(' ', 1);
             bool l = false;
-            string userName;
             string[] userData = new string[5];
 
             do
