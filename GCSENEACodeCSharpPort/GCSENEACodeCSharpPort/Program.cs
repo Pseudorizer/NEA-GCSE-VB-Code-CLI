@@ -9,28 +9,15 @@ namespace GCSENEACodeCSharpPort
 {
     class Start
     {
-        public static List<string> UserInfo()
-        {
-            string[] writeIndex = new string[4] { "name", "password", "age", "year group" };
-            List<string> savedValues = new List<string>();
-
-            for (int i = 0; i < 4; i++)
-            {
-                Console.WriteLine("Please enter your {0}", writeIndex[i]);
-                savedValues.Add(Console.ReadLine());
-            }
-
-            return savedValues;
-        }
-
         static void Main()
         {
             string space = new string(' ', 1);
             bool l = false;
             string userName;
-            List<string> userData;
+            string[] userData = new string[5];
 
-            do {
+            do
+            {
                 Console.WriteLine("Do you have an account? Yes or No?");
                 string AccountCheck = Console.ReadLine();
                 AccountCheck.ToLower();
@@ -40,18 +27,16 @@ namespace GCSENEACodeCSharpPort
                 switch (AccountCheck)
                 {
                     case "yes":
-
+                        Console.WriteLine("test");
                         break;
                     case "no":
                         userData = UserInfo();
                         string t = userData[0];
                         int j = Convert.ToInt32(userData[2]);
                         userName = t.Substring(0, 3) + j;
-                        bool test = FileWrite.DirExist(userName);
-                        if (test == false)
-                        {
-                            Console.WriteLine("1");
-                        }
+                        userData[4] = userName;
+
+                        FileWrite.MainFW((string[])userData.ToArray());
                         break;
                     default:
                         Console.WriteLine("Error incorrect response");
@@ -61,20 +46,30 @@ namespace GCSENEACodeCSharpPort
                 }
             } while (l == true);
 
-         Console.ReadKey();
+            Console.ReadKey();
+        }
+
+        static string[] UserInfo()
+        {
+            string[] writeIndex = new string[4] { "name", "password", "age", "year group" };
+            string[] userData = new string[5];
+
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine("Please enter your {0}", writeIndex[i]);
+                userData[i] = Console.ReadLine();
+            }
+
+            return userData;
         }
     }
 
-    class FileWrite: Start
+    class FileWrite : Start
     {
-        public static bool DirExist(string path)
-        {
-            return (Directory.Exists(path));
-        }
-
-        private void FS(string dir, string userName)
+        public static void FileWriter(string dir, string[] userDataArray)
         {
             string[] fileNames = new string[5] { "Name", "Password", "Age", "Year Group", "Username" };
+            string userName = userDataArray[4];
 
             FileStream fileCreate;
 
@@ -84,31 +79,32 @@ namespace GCSENEACodeCSharpPort
             {
                 string p = fileNames[i] + ".txt";
                 fileCreate = File.Create(dir + userName + p);
+                fileCreate.Close();
+
+                StreamWriter fileStreamWriter = new StreamWriter(dir + userName + p);
+
+                fileStreamWriter.WriteLine(userDataArray[i]);
+                fileStreamWriter.Close();
             }
+
+            return;
         }
 
-        public static bool DirCheck(string userName)
+        public static void MainFW(string[] userData)
         {
             string root = Path.GetPathRoot(Directory.GetCurrentDirectory());
             string dir = (root + @"NeaFiles\");
 
-            bool dirCheck = DirExist(dir);
+            bool dirCheck = Directory.Exists(dir + userData[4] + @"\");
 
             if (dirCheck == true)
             {
-
-            }
-            else if (dirCheck == false)
-            {
-                Directory.CreateDirectory(dir);
-
-                Directory.CreateDirectory(dir + userName);
-               
+                Console.WriteLine("User account already exists");
+                return; //Change when user login is created
             }
 
-            dirCheck = DirExist(dir);
-
-            return dirCheck;
+            Directory.CreateDirectory(dir + userData[4] + @"\");
+            FileWriter(dir, userData);
         }
     }
 }
