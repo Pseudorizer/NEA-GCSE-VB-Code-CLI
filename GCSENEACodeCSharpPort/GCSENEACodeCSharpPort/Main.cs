@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 
 namespace GCSENEACodeCSharpPort
@@ -29,10 +29,7 @@ namespace GCSENEACodeCSharpPort
                         break;
                     case "no":
                         userData = UserInfo(); //Call method UserInfo to get user info, store return data in an array
-                        string t = userData[0]; //Get username from userData array
-                        int j = Convert.ToInt32(userData[2]); //Get age from userData array
-                        userName = t.Substring(0, 3) + j;
-                        userData[4] = userName; //Put userName into the array
+                        userData[4] = userData[0].Substring(0, 3) + userData[2]; //Create userName and put it into the array
                         Console.WriteLine("Your username is {0}", userData[4]);
 
                         FileOps.MainFW(userData.ToArray()); //Call FileOps.MainFW passing userData along
