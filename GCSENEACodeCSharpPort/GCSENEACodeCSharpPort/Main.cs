@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 
 namespace GCSENEACodeCSharpPort
@@ -49,16 +49,38 @@ namespace GCSENEACodeCSharpPort
         {
             string[] writeIndex = new string[4] { "name", "password", "age", "year group" }; //Store questions in an array to call in for loop
             string[] userData = new string[5]; //For storing user responses
+            bool loop = false;
 
-            for (int i = 0; i < 4; i++) //Goes until i = 4, add 1 to i every loop
+            do
             {
-                Console.WriteLine("Please enter your {0}", writeIndex[i]);
-                userData[i] = Console.ReadLine(); //Store response to userData array
-            }
+                for (int i = 0; i < 4; i++) //Goes until i = 4, add 1 to i every loop
+                {
+                    Console.WriteLine("Please enter your {0}", writeIndex[i]);
+                    userData[i] = Console.ReadLine(); //Store response to userData array
+                }
 
-            Console.Clear();
+                Console.Clear();
 
-            return userData;
+                bool letterTest = UserDataUpperCaseCheck(userData);
+
+                if (letterTest == true)
+                {
+                    Console.WriteLine("Do not enter characters for your age!");
+                    Console.WriteLine(" ");
+                    loop = true;
+                }
+                else if (letterTest == false)
+                {
+                    return userData;
+                }
+            } while (loop == true);
+            return null; //Find out what you're supposed to do in this situation
+        }
+
+        public static bool UserDataUpperCaseCheck(string[] array)
+        {
+            bool checkForIntegers = array[2].Any(char.IsLetter);
+            return checkForIntegers;
         }
     }
 }

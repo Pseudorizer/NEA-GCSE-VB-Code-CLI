@@ -76,6 +76,7 @@ namespace GCSENEACodeCSharpPort
                     Console.WriteLine("Incorrect");
                     return false;
             }
+            Console.WriteLine("Process escaped switch @line 68, Login.cs");
             return false;
         }
     }
