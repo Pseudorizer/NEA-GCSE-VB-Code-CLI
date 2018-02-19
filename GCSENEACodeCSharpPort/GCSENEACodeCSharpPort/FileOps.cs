@@ -9,9 +9,9 @@ namespace GCSENEACodeCSharpPort
         {
             string root = Path.GetPathRoot(Directory.GetCurrentDirectory());
             string dir = root + @"NeaFiles\" + inputUserName; //Creates a string for the directory location
-            string i = GetUserData(dir); 
+            string v = GetUserData(dir); 
 
-            return i; //Returns value
+            return v; //Returns value
         }
 
         public static void FileWriter(string dir, string[] userDataArray)
@@ -56,9 +56,10 @@ namespace GCSENEACodeCSharpPort
             Directory.CreateDirectory(dir + userData[4] + @"\"); //Create directory for user
             FileWriter(dir, userData); 
             Login.SignIn();
+            return;
         }
 
-        public static string GetUserData(string dir)
+        public static string GetUserData(string dir) //Has to be a string to account for capitals
         {
             try
             {

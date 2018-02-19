@@ -12,7 +12,7 @@ namespace GCSENEACodeCSharpPort
             bool PasswordComparisonCheck;
             string space = new string(' ', 1);
 
-            Console.WriteLine(" ");
+            Console.WriteLine(space);
             Console.WriteLine("Login");
             Console.WriteLine("---------------------------");
 
@@ -51,13 +51,11 @@ namespace GCSENEACodeCSharpPort
             } while (PasswordComparisonCheck == false);
 
             Console.WriteLine(space);
-            Console.WriteLine("Login successful, press enter");
+            Console.WriteLine("Login successful, press any key to continue");
 
             Console.ReadKey();
 
             Console.Clear();
-
-            Difficulty.Choice();
 
             return;
         }

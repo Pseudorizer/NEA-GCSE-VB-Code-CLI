@@ -42,6 +42,10 @@ namespace GCSENEACodeCSharpPort
                 }
             } while (l == true);
 
+            string[] usersChoice = Difficulty.Choice();
+
+            Questions.PrintQuestions(usersChoice.ToArray());
+
             Console.ReadKey();
         }
 
@@ -61,7 +65,7 @@ namespace GCSENEACodeCSharpPort
 
                 Console.Clear();
 
-                bool letterTest = UserDataUpperCaseCheck(userData);
+                bool letterTest = UserDataLetterCheck(userData);
 
                 if (letterTest == true)
                 {
@@ -77,7 +81,7 @@ namespace GCSENEACodeCSharpPort
             return null; //Find out what you're supposed to do in this situation
         }
 
-        public static bool UserDataUpperCaseCheck(string[] array)
+        public static bool UserDataLetterCheck(string[] array)
         {
             bool checkForIntegers = array[2].Any(char.IsLetter);
             return checkForIntegers;
