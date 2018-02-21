@@ -53,11 +53,14 @@ namespace GCSENEACodeCSharpPort
             Console.WriteLine(space);
             Console.WriteLine("Login successful, press any key to continue");
 
-            Console.ReadKey();
-
             Console.Clear();
 
-            return;
+            string[] a = new string[2];
+            a = Difficulty.Choice();
+
+            Questions.QuestionsMain(a);
+
+            Console.ReadKey();
         }
 
         static bool StringCheck(string Input, string ToCompare)

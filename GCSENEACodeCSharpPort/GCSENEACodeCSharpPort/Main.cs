@@ -1,15 +1,53 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 
 namespace GCSENEACodeCSharpPort
 {
     class Start
     {
-        static void Main()
+        static void NeaFolderDataCheck()
+        {
+            bool do1 = false;
+            string root = Path.GetPathRoot(Directory.GetCurrentDirectory());
+
+            if (!Directory.Exists(root + "NeaFolderData"))
+            {
+                do
+                {
+                    Console.WriteLine("Is this your first time running the software? Yes or No?");
+                    string firstRunAnswer = Console.ReadLine();
+                    firstRunAnswer.ToLower();
+
+                    if (firstRunAnswer == "yes")
+                    {
+                        Console.WriteLine("Running first time setup...");
+                        do1 = false;
+                        FirstTimeSetup.MainFTS();
+                    }
+                    else if (firstRunAnswer == "no")
+                    {
+                        Console.WriteLine("Error: NeaFolderData not found");
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Please enter yes or no");
+                        Console.WriteLine(" ");
+                        do1 = true;
+                    }
+                } while (do1 == true);
+            }
+            return;
+        }
+
+        public static void Main()
         {
             string space = new string(' ', 1);
-            bool l = false;
+            bool do2 = false;
             string[] userData = new string[5];
+
+            NeaFolderDataCheck();
 
             do
             {
@@ -24,7 +62,7 @@ namespace GCSENEACodeCSharpPort
                     case "yes":
                         Console.Clear();
                         Login.SignIn(); //Move to method SignIn in class Login
-                        l = false; //Escape do loop
+                        do2 = false; //Escape do loop
                         break;
                     case "no":
                         userData = UserInfo(); //Call method UserInfo to get user info, store return data in an array
@@ -32,28 +70,27 @@ namespace GCSENEACodeCSharpPort
                         Console.WriteLine("Your username is {0}", userData[4]);
 
                         FileOps.MainFW(userData.ToArray()); //Call FileOps.MainFW passing userData along
-                        l = false;
+                        Login.SignIn();
+                        do2 = false;
                         break;
                     default: //If the users reponse didn't equal yes or no
                         Console.WriteLine("Error incorrect response");
                         Console.WriteLine(space);
-                        l = true;
+                        do2 = true;
                         break;
                 }
-            } while (l == true);
-
-            string[] usersChoice = Difficulty.Choice();
-
-            Questions.PrintQuestions(usersChoice.ToArray());
+            } while (do2 == true);
 
             Console.ReadKey();
         }
 
-        static string[] UserInfo()
+        public static string[] UserInfo()
         {
             string[] writeIndex = new string[4] { "name", "password", "age", "year group" }; //Store questions in an array to call in for loop
             string[] userData = new string[5]; //For storing user responses
             bool loop = false;
+
+            Console.Clear();
 
             do
             {

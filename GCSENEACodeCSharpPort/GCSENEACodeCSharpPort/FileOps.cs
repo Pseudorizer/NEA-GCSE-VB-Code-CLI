@@ -7,9 +7,9 @@ namespace GCSENEACodeCSharpPort
     {
         public static string GetUserDir(string inputUserName)
         {
-            string root = Path.GetPathRoot(Directory.GetCurrentDirectory());
-            string dir = root + @"NeaFiles\" + inputUserName; //Creates a string for the directory location
-            string v = GetUserData(dir); 
+            string customDirectory = GetCustomUserFolder(Path.GetPathRoot(Directory.GetCurrentDirectory()));
+            string dir = customDirectory + inputUserName; //Creates a string for the directory location
+            string v = GetUserData(dir);
 
             return v; //Returns value
         }
@@ -40,8 +40,7 @@ namespace GCSENEACodeCSharpPort
 
         public static void MainFW(string[] userData)
         {
-            string root = Path.GetPathRoot(Directory.GetCurrentDirectory());
-            string dir = (root + @"NeaFiles\");
+            string dir = GetCustomUserFolder(Path.GetPathRoot(Directory.GetCurrentDirectory()));
 
             bool dirCheck = Directory.Exists(dir + userData[4] + @"\"); //Makes sure the user account doesn't already exist
 
@@ -54,9 +53,9 @@ namespace GCSENEACodeCSharpPort
             }
 
             Directory.CreateDirectory(dir + userData[4] + @"\"); //Create directory for user
-            FileWriter(dir, userData); 
+            Directory.CreateDirectory(dir + "Questions");
+            FileWriter(dir, userData);
             Login.SignIn();
-            return;
         }
 
         public static string GetUserData(string dir) //Has to be a string to account for capitals
@@ -75,6 +74,19 @@ namespace GCSENEACodeCSharpPort
                 bool b = false;
                 return b.ToString();
             }
+        }
+
+        public static string GetCustomUserFolder(string root)
+        {
+            string location;
+
+            using (StreamReader r = new StreamReader(root + @"NeaFolderData\path.txt"))
+            {
+                location = r.ReadLine();
+            }
+
+            location.TrimEnd();
+            return location;
         }
     }
 }

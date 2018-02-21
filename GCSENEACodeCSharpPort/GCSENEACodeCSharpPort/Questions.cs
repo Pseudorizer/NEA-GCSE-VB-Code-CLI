@@ -1,8 +1,11 @@
-﻿namespace GCSENEACodeCSharpPort
+﻿using System;
+using System.IO;
+
+namespace GCSENEACodeCSharpPort
 {
     class Questions
     {
-        public static void PrintQuestions(string[] difficultyAndSubjectArray)
+        public static void QuestionsMain(string[] difficultyAndSubjectArray)
         {
 
         }
