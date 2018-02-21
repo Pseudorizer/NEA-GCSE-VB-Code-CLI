@@ -41,6 +41,28 @@ namespace GCSENEACodeCSharpPort
             return;
         }
 
+        static void PostFirstTimeSetupFlow()
+        {
+            string[] userData = new string[5];
+
+            string root = Path.GetPathRoot(Directory.GetCurrentDirectory());
+            DirectoryInfo countFolders = new DirectoryInfo(FileOps.GetCustomUserFolder(root));
+
+            int postFirstTimeSetupCheck = countFolders.EnumerateDirectories().Count();
+
+            if (postFirstTimeSetupCheck == 1)
+            {
+                userData = UserInfo();
+
+                userData[4] = userData[0].Substring(0, 3) + userData[2];
+                Console.WriteLine("Your username is {0}", userData[4]);
+
+                FileOps.MainFW(userData.ToArray());
+            }
+
+            return;
+        }
+
         public static void Main()
         {
             string space = new string(' ', 1);
@@ -48,6 +70,8 @@ namespace GCSENEACodeCSharpPort
             string[] userData = new string[5];
 
             NeaFolderDataCheck();
+
+            PostFirstTimeSetupFlow();
 
             do
             {
@@ -70,7 +94,6 @@ namespace GCSENEACodeCSharpPort
                         Console.WriteLine("Your username is {0}", userData[4]);
 
                         FileOps.MainFW(userData.ToArray()); //Call FileOps.MainFW passing userData along
-                        Login.SignIn();
                         do2 = false;
                         break;
                     default: //If the users reponse didn't equal yes or no

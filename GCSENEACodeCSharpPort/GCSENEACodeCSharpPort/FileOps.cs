@@ -3,7 +3,7 @@ using System.IO;
 
 namespace GCSENEACodeCSharpPort
 {
-    class FileOps : Start
+    class FileOps
     {
         public static string GetUserDir(string inputUserName)
         {
@@ -85,7 +85,7 @@ namespace GCSENEACodeCSharpPort
                 location = r.ReadLine();
             }
 
-            location.TrimEnd();
+            location.Trim();
             return location;
         }
     }
