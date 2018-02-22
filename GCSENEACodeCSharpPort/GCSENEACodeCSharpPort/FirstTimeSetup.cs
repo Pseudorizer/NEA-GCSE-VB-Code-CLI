@@ -20,22 +20,18 @@ namespace GCSENEACodeCSharpPort
             Console.WriteLine("Creating Directories...");
             Console.WriteLine("-------------------------");
 
+            string[] subDirs = new string[3] { @"\Easy", @"\Medium", @"\Hard" };
+            string[] dirs = new string[3] { @"\Computer Science", @"\History", @"\Music" };
+
             string questionDirs = (root + userFolderName + @"\Questions");
 
-            Directory.CreateDirectory(questionDirs + @"\Computer Science");
-            Directory.CreateDirectory(questionDirs + @"\Computer Science\Easy");
-            Directory.CreateDirectory(questionDirs + @"\Computer Science\Medium");
-            Directory.CreateDirectory(questionDirs + @"\Computer Science\Hard");
-
-            Directory.CreateDirectory(questionDirs + @"\History");
-            Directory.CreateDirectory(questionDirs + @"\History\Easy");
-            Directory.CreateDirectory(questionDirs + @"\History\Medium");
-            Directory.CreateDirectory(questionDirs + @"\History\Hard");
-
-            Directory.CreateDirectory(questionDirs + @"\Music");
-            Directory.CreateDirectory(questionDirs + @"\Music\Easy");
-            Directory.CreateDirectory(questionDirs + @"\Music\Medium");
-            Directory.CreateDirectory(questionDirs + @"\Music\Hard");
+            for (int i = 0; i < 3; i++)
+            {
+                foreach (string subDir in subDirs)
+                {
+                    Directory.CreateDirectory(questionDirs + dirs[i] + subDir);
+                }
+            }
 
             string userFolderLocation = root + userFolderName + @"\";
 
