@@ -6,41 +6,6 @@ namespace GCSENEACodeCSharpPort
 {
     class Start
     {
-        static void NeaFolderDataCheck()
-        {
-            bool do1 = false;
-            string root = Path.GetPathRoot(Directory.GetCurrentDirectory());
-
-            if (!Directory.Exists(root + "NeaFolderData"))
-            {
-                do
-                {
-                    Console.WriteLine("Is this your first time running the software? Yes or No?");
-                    string firstRunAnswer = Console.ReadLine();
-                    firstRunAnswer.ToLower();
-
-                    if (firstRunAnswer == "yes")
-                    {
-                        Console.WriteLine("Running first time setup...");
-                        do1 = false;
-                        FirstTimeSetup.MainFTS();
-                    }
-                    else if (firstRunAnswer == "no")
-                    {
-                        Console.WriteLine("Error: NeaFolderData not found");
-                    }
-                    else
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Please enter yes or no");
-                        Console.WriteLine(" ");
-                        do1 = true;
-                    }
-                } while (do1 == true);
-            }
-            return;
-        }
-
         static void PostFirstTimeSetupFlow()
         {
             string[] userData = new string[5];
@@ -71,7 +36,9 @@ namespace GCSENEACodeCSharpPort
             bool do2 = false;
             string[] userData = new string[5];
 
-            NeaFolderDataCheck();
+            Exceptions.NeaFolderDataCheck();
+
+            Exceptions.NoUserFolderCatch();
 
             PostFirstTimeSetupFlow();
 

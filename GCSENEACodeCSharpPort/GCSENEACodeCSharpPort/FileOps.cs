@@ -86,6 +86,7 @@ namespace GCSENEACodeCSharpPort
             }
 
             location.Trim();
+            location = location + @"\";
             return location;
         }
     }

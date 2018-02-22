@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Difficulty.cs" />
+    <Compile Include="Exceptions.cs" />
     <Compile Include="FileOps.cs" />
     <Compile Include="FirstTimeSetup.cs" />
     <Compile Include="Login.cs" />

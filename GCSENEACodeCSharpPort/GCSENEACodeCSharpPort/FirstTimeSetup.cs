@@ -33,7 +33,7 @@ namespace GCSENEACodeCSharpPort
                 }
             }
 
-            string userFolderLocation = root + userFolderName + @"\";
+            string userFolderLocation = root + userFolderName;
 
             string permDir = root + "NeaFolderData";
             Directory.CreateDirectory(permDir);
@@ -44,7 +44,7 @@ namespace GCSENEACodeCSharpPort
             writer.WriteLine(userFolderLocation);
             writer.Close();
 
-            Console.WriteLine("Done. Created {0} and {1}. Press any key to continue to account creation", userFolderLocation, permDir);
+            Console.WriteLine("Done. Created {0} and {1}. Press any key to continue", userFolderLocation, permDir);
             Console.ReadKey();
 
             Console.Clear();
