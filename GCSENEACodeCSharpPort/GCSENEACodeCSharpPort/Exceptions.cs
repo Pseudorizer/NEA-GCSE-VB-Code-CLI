@@ -14,8 +14,6 @@ namespace GCSENEACodeCSharpPort
             {
                 Console.WriteLine("User account folder is missing, it will now be recreated");
                 string p = root + @"NeaFolderData\";
-                Console.WriteLine(p);
-                Console.ReadKey();
                 DirectoryInfo d = new DirectoryInfo(p);
                 d.Delete(true);
                 Console.WriteLine("");
